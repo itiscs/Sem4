@@ -20,6 +20,7 @@ namespace WebApplication7.Models
         public string FirstMidName { get; set; }
         [Display(Name = "Дата записи")]
         public DateTime EnrollmentDate { get; set; }
+        public string ImageFile { get; set; }
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
     }

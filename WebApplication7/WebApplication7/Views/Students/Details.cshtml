@@ -34,6 +34,14 @@
             @Html.DisplayFor(model => model.EnrollmentDate)
         </dd>
 
+
+        <dt>
+            Картинка
+        </dt>
+
+        <dd>
+            <img src="~/Content/Images/@Html.DisplayFor(model =>model.ImageFile)" style="height:300px;width:300px;"  alt="Image" />
+        </dd>
         <dd>
             <table class="table">
                 <tr>
@@ -41,16 +49,16 @@
                     <th>Grade</th>
                 </tr>
                 @foreach (var item in Model.Enrollments)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Course.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grade)
-                </td>
-            </tr>
-}
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                </tr>
+        }
             </table>
         </dd>
 

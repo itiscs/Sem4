@@ -9,3 +9,9 @@
 /WebShop/.vs/WebShop/v15
 /WebShop/WebShop/bin
 /WebShop/WebShop/obj/Debug
+/IdentityApp/.vs
+/IdentityApp/IdentityApp/bin
+/IdentityApp/IdentityApp/obj/Debug
+/IdentityApp/IdentityApp/App_Data/aspnet-IdentityApp-20180319090915.mdf
+/IdentityApp/IdentityApp/App_Data/aspnet-IdentityApp-20180319090915_log.ldf
+/IdentityApp/packages

@@ -15,3 +15,8 @@
 /IdentityApp/IdentityApp/App_Data/aspnet-IdentityApp-20180319090915.mdf
 /IdentityApp/IdentityApp/App_Data/aspnet-IdentityApp-20180319090915_log.ldf
 /IdentityApp/packages
+/RolesApp/.vs/RolesApp/v15
+/RolesApp/packages
+/RolesApp/RolesApp/App_Data
+/RolesApp/RolesApp/bin
+/RolesApp/RolesApp/obj/Debug

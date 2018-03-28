@@ -4,9 +4,12 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using IdentityApp.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace IdentityApp.Controllers
 {
@@ -47,47 +50,76 @@ namespace IdentityApp.Controllers
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        public async Task<ActionResult> Create([Bind(Include = "Email,PhoneNumber,UserName")] ApplicationUser applicationUser)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(applicationUser);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
+                var result = await userManager.CreateAsync(applicationUser,"123456");
+                if(result.Succeeded)
+                    return RedirectToAction("Index");
             }
 
             return View(applicationUser);
         }
 
         // GET: ApplicationUsers/Edit/5
-        public ActionResult Edit(string id)
+        public async Task<ActionResult> Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.Users.Find(id);
+            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+
+            ApplicationUser applicationUser = userManager.FindById(id);
             if (applicationUser == null)
             {
                 return HttpNotFound();
             }
-            return View(applicationUser);
+            UserRolesViewModel userRoles = new UserRolesViewModel() { User = applicationUser, Id = applicationUser.Id };
+            userRoles.Roles = new Dictionary<IdentityRole,bool>();
+            foreach (var role in roleManager.Roles)
+            {
+                var b = applicationUser.Roles.FirstOrDefault(u=>u.RoleId== role.Id) != null;
+                userRoles.Roles.Add(role, b);
+            }
+            return View(userRoles);
         }
 
         // POST: ApplicationUsers/Edit/5
         // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
         // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
+        [ValidateAntiForgeryToken]  //[Bind(Include = "Email,PhoneNumber,UserName, Roles")] 
+        public ActionResult Edit( UserRolesViewModel userRoles)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(applicationUser).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(userRoles.User).State = EntityState.Modified;
+                //db.SaveChanges();
+
+                foreach(var role in userRoles.Roles)
+                {
+                    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+                    var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
+                    if (role.Value)
+                    {
+                        if (roleManager.FindByName(role.Key.Name).Users.All(u => u.UserId != userRoles.Id))
+                            userManager.AddToRole(userRoles.Id,role.Key.Name);
+                    }
+                    else
+                    {
+                        if (roleManager.FindByName(role.Key.Name).Users.Any(u => u.UserId == userRoles.Id))
+                            userManager.RemoveFromRole(userRoles.Id, role.Key.Name);
+                    }
+
+                }
+
                 return RedirectToAction("Index");
             }
-            return View(applicationUser);
+            return View(userRoles);
         }
 
         // GET: ApplicationUsers/Delete/5

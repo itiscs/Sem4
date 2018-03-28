@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace IdentityApp.Models
+namespace RolesApp.Models
 {
-    
-
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -51,8 +49,9 @@ namespace IdentityApp.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Имя пользователя")]
-        public string Username { get; set; }
+        [Display(Name = "Адрес электронной почты")]
+        [EmailAddress]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -69,11 +68,6 @@ namespace IdentityApp.Models
         [EmailAddress]
         [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "Значение {0} должно содержать не менее {2} символов.", MinimumLength = 6)]
-        [Display(Name = "Имя пользователя")]
-        public string UserName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "Значение {0} должно содержать не менее {2} символов.", MinimumLength = 6)]

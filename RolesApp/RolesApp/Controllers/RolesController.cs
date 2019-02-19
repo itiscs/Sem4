@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace RolesApp.Controllers
 {
-    [Authorize(Roles ="Админ")]
+    [Authorize(Roles = "Админ")]
     public class RolesController : Controller
     {
 
@@ -27,7 +27,7 @@ namespace RolesApp.Controllers
         // GET: Roles
         public ActionResult Index()
         {
-            
+
             return View(roleManager.Roles);
         }
 
@@ -49,10 +49,10 @@ namespace RolesApp.Controllers
                                 (new UserStore<ApplicationUser>(db));
 
             RoleUsersViewModel ruVM = new RoleUsersViewModel()
-                        { Id = role.Id, Name = role.Name };
+            { Id = role.Id, Name = role.Name };
             ruVM.Users = new List<ApplicationUser>();
-            
-            foreach(var user in role.Users)
+
+            foreach (var user in role.Users)
             {
                 ruVM.Users.Add(userManager.FindById(user.UserId));
             }
@@ -67,7 +67,7 @@ namespace RolesApp.Controllers
 
         // POST: Roles/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include="Name")] IdentityRole role)
+        public ActionResult Create([Bind(Include = "Name")] IdentityRole role)
         {
             try
             {
@@ -78,6 +78,52 @@ namespace RolesApp.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: Roles/AddToRole/id
+        public ActionResult AddToRole(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var role = roleManager.FindById(id);
+
+            if (role == null)
+            {
+                return HttpNotFound();
+            }
+            UserInRoleViewModel ur = new UserInRoleViewModel() { Role = role };
+            PopulateUsersDropDownList(ur.UserId);
+            return View(ur);
+        }
+        // GET: Roles/AddToRole/id
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddToRole([Bind] UserInRoleViewModel ur)
+        {
+            //if (ur == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //var role = roleManager.FindById(id);
+
+            //if (role == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //UserInRoleViewModel ur = new UserInRoleViewModel() { Role = role };
+            //PopulateUsersDropDownList(ur.UserId);
+            //return View(ur);
+        }
+
+        private void PopulateUsersDropDownList(object selectedUser = null)
+        {
+            UserManager<ApplicationUser> userManager = new UserManager<ApplicationUser>
+                   (new UserStore<ApplicationUser>(db));
+
+            ViewBag.UserID = new SelectList(userManager.Users, "Id", "UserName", selectedUser);
+
         }
 
         // GET: Roles/Edit/5

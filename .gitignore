@@ -20,3 +20,7 @@
 /RolesApp/RolesApp/App_Data
 /RolesApp/RolesApp/bin
 /RolesApp/RolesApp/obj/Debug
+/.vs
+/AppCookies/.vs
+/AppCookies/AppCookies/bin/Debug/netcoreapp2.1
+/AppCookies/AppCookies/obj

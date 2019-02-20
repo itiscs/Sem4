@@ -24,3 +24,7 @@
 /AppCookies/.vs
 /AppCookies/AppCookies/bin/Debug/netcoreapp2.1
 /AppCookies/AppCookies/obj
+/AppCookies/AppCookies/Migrations
+/CookiesRoles/.vs
+/CookiesRoles/CookiesRoles/bin/Debug/netcoreapp2.1
+/CookiesRoles/CookiesRoles/obj

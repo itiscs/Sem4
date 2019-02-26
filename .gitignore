@@ -28,3 +28,6 @@
 /CookiesRoles/.vs
 /CookiesRoles/CookiesRoles/bin/Debug/netcoreapp2.1
 /CookiesRoles/CookiesRoles/obj
+/WebNpgsql/.vs
+/WebNpgsql/WebNpgsql/bin/Debug/netcoreapp2.1
+/WebNpgsql/WebNpgsql/obj

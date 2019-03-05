@@ -1,7 +1,9 @@
 # Semestr 4
 ASP.NET Core
     AppCookies - аутентификация на куки 
+    CookiesRoles - роли пользователи
+    ChatSample - пример SignalR
+    WebNpgsql  - подключение к Postgres
 
 
-Framework
-WebApplication7 - Contoso Example - Entity Framework
+Остальные проекты ASP.NET Framework

@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:60070",
-      "sslPort": 44354
+      "applicationUrl": "http://localhost:51552",
+      "sslPort": 44317
     }
   },
   "profiles": {
@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CookiesRoles": {
+    "SignalRHub": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

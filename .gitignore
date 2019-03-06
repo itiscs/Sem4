@@ -31,3 +31,11 @@
 /WebNpgsql/.vs
 /WebNpgsql/WebNpgsql/bin/Debug/netcoreapp2.1
 /WebNpgsql/WebNpgsql/obj
+/ChatSample/.vs
+/ChatSample/ChatSample/bin/Debug/netcoreapp2.1
+/ChatSample/ChatSample/obj
+/CookiesRoles/CookiesRoles/node_modules
+/CookiesRoles/node_modules
+/SignalRHub/.vs
+/SignalRHub/SignalRHub/bin/Debug/netcoreapp2.1
+/SignalRHub/SignalRHub/obj

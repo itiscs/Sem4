@@ -43,9 +43,19 @@ namespace CookiesRoles
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+                       
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+                    builder =>
+                    {
+                        builder.AllowAnyMethod().AllowAnyHeader()
+                               .AllowAnyOrigin()
+                               .AllowCredentials();
+                    }));
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +77,8 @@ namespace CookiesRoles
 
             app.UseAuthentication();
 
+            app.UseCors("CorsPolicy");
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

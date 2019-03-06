@@ -77,6 +77,13 @@ namespace CookiesRoles.Controllers
             }
             return View(model);
         }
+
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Account");
+        }
+
         private async Task Authenticate(User user)
         {
             // создаем один claim

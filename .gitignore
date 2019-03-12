@@ -39,3 +39,6 @@
 /SignalRHub/.vs
 /SignalRHub/SignalRHub/bin/Debug/netcoreapp2.1
 /SignalRHub/SignalRHub/obj
+/RoutingApp/.vs
+/RoutingApp/RoutingApp/bin/Debug/netcoreapp2.1
+/RoutingApp/RoutingApp/obj

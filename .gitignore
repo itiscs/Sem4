@@ -42,3 +42,6 @@
 /RoutingApp/.vs
 /RoutingApp/RoutingApp/bin/Debug/netcoreapp2.1
 /RoutingApp/RoutingApp/obj
+/IdentityCore/.vs
+/IdentityCore/IdentityCore/bin/Debug/netcoreapp2.1
+/IdentityCore/IdentityCore/obj

@@ -17,7 +17,7 @@ namespace WebShop.Models
                 new Phone(){Brand="Samsung", Model="Galaxy 9", Price=65m,
                              Amount=100, ImageFile="Samsung.png" },
                 new Phone(){Brand="Xaomi", Model="Mi 6", Price=35m,
-                             Amount=100, ImageFile="xaomi.png" },
+                             Amount=100, ImageFile="xiaomi.png" },
             };
 
             phones.ForEach(p => context.Phones.Add(p));

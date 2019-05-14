@@ -45,3 +45,12 @@
 /IdentityCore/.vs
 /IdentityCore/IdentityCore/bin/Debug/netcoreapp2.1
 /IdentityCore/IdentityCore/obj
+/WebApiClientCore/.vs/WebApiClientCore
+/WebApiClientCore/WebApiClientCore/bin/Debug/netcoreapp2.1
+/WebApiClientCore/WebApiClientCore/obj
+/WebApiCore/.vs/WebApiCore
+/WebApiCore/WebApiCore/bin/Debug/netcoreapp2.1
+/WebApiCore/WebApiCore/obj
+/WebShop/.vs/WebShop
+/ShopCore/.vs
+/ShopCore/ShopCore/obj

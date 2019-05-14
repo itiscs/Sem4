@@ -8,6 +8,11 @@ ASP.NET Core
     ChatSample - пример SignalR
     
     WebNpgsql  - подключение к Postgres
+    
+    WebApiCore  -  пример сервиса Web Api 
+    
+    WebApiClientCore - подключение к сервису WebApi - жётско завязан на порт, на котором разворачивается сервис
+                       экшены, использующие методы сервиса, оказались в Home контроллере 
 
 
 

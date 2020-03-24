@@ -1,0 +1,18 @@
+﻿@model IEnumerable<WebApiIdentity2.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Все пользователи";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table class="table">
+    <tr><td>Имя</td><td>Возраст</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.UserName</td><td>@item.Email</td><td>@item.Age</td></tr>
+    }
+</table>
+

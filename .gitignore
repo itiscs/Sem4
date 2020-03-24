@@ -55,3 +55,6 @@
 /ShopCore/.vs
 /ShopCore/ShopCore/obj
 /IdentityApp/IdentityApp/obj
+/WebApiIdentity2/.vs/WebApiIdentity2
+/WebApiIdentity2/WebApiIdentity2/bin/Debug/netcoreapp3.0
+/WebApiIdentity2/WebApiIdentity2/obj

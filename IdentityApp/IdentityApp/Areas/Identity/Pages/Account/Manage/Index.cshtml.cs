@@ -59,6 +59,7 @@ namespace IdentityApp.Areas.Identity.Pages.Account.Manage
             }
 
             await LoadAsync(user);
+            
             return Page();
         }
 

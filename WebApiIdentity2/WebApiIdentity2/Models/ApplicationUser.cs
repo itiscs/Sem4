@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace IdentityApp.Models
+namespace WebApiIdentity2.Models
 {
-    public class User:IdentityUser
+    public class ApplicationUser:IdentityUser
     {
-        public int? Age { get; set; }
+        public int Age { get; set; }
 
 
     }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace IdentityApp.Models
 {
-    public class User:IdentityUser
+    public class ApplicationUser:IdentityUser
     {
-        public int? Age { get; set; }
-
-
+        public int Age { get; set; }
+        public bool Banned { get; set; }
     }
 }

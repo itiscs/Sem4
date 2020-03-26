@@ -1,0 +1,23 @@
+﻿@model IEnumerable<IdentityApp.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Все пользователи";
+}
+
+
+<table class="table">
+    <tr>
+        <td>Имя</td>
+        <td>E-mail</td>
+        <td>Возраст</td>
+        <td>Бан</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.Age</td>
+            <td>@item.Banned</td>
+        </tr>
+    }
+</table>

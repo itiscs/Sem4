@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
-using WebApiClient809.Models;
+using WebApiClient811.Models;
 
-namespace WebApiClient809.Services
+namespace WebApiClient811.Services
 {
     public class UsersService
     {
         HttpClient client = new HttpClient();
-        string uri = "http://localhost:63680/api/users";
+        string uri = "http://localhost:62793/api/users";
 
         public async Task<IEnumerable<User>> GetUsers()
         {
@@ -21,6 +22,7 @@ namespace WebApiClient809.Services
             var users = JsonConvert.DeserializeObject<List<User>>(result);
             return users;
         }
+
         public async Task<User> GetUsersByID(int id)
         {
             var resp = await client.GetAsync(uri + $"/{id}");
@@ -28,17 +30,16 @@ namespace WebApiClient809.Services
             var user = JsonConvert.DeserializeObject<User>(result);
             return user;
         }
+
         public async Task<HttpStatusCode> AddUser(User user)
         {
             var content = new StringContent(JsonConvert.SerializeObject(user),
-                System.Text.Encoding.UTF8, "application/json");
+                Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PostAsync(
                 uri, content);
             return response.StatusCode;
 
         }
-
-
 
 
 
